@@ -1,10 +1,13 @@
 const express = require('express')
 const app = express();
 const mongoose = require('./db');
+require('dotenv').config();
+
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json()); //store in req.body
 
+const PORT = process.env.PORT || 3000;
 
 
 
@@ -20,7 +23,10 @@ const MenuItemRoutes = require('./routes/MenuItemRoutes');
 app.use('/person', personRoutes);
 app.use('/menuitem',MenuItemRoutes );
 
-app.listen(3000, ()=>{
+
+
+
+app.listen(PORT, ()=>{
     console.log('listen on port 3000')
 })
 
